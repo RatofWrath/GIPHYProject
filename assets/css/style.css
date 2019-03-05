@@ -8,3 +8,14 @@
     background-color: orange;
     margin-left: 5px;
 }
+
+#gifSet{
+    margin-top: 15px;
+}
+
+#ratingText{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+    margin-top: 5px;
+}
