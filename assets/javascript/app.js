@@ -37,8 +37,12 @@ $(":button").on("click", function(){
       var rating = results[i].rating;
       var p = $("<p id='ratingText'>").text("Rating: " + rating);
       var animalImage = $("<img>");
-      animalImage.attr("src", results[i].images.fixed_height.url);
-      console.log(animalImage);
+      animalImage.attr("src", results[i].images.fixed_height_still.url);
+      animalImage.attr("height", 300);
+      animalImage.attr("width", 300);
+      animalImage.attr("data-still", results[i].images.fixed_height_still.url);
+      animalImage.attr("data-animate", results[i].images.fixed_height.url);
+      animalImage.attr("data-state", "still");
       gifDiv.append(p);
       gifDiv.append(animalImage);
       $("#gifSet").prepend(gifDiv);
@@ -46,3 +50,16 @@ $(":button").on("click", function(){
   })
 }
 );
+
+$(document).on("click", "img", function() {
+  var state = $(this).attr("data-state");
+  if (state === "still"){
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  }
+
+  else{
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+});
